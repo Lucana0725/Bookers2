@@ -1,2 +1,15 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1>User info</h1>
+<!--user_controller#showで定義した@userに対してUserモデルのget_profile_imageメソッドを使用-->
+<%= image_tag @user.get_profile_image(100, 100) %>
+<table>
+  <tbody>
+    <tr>
+      <td>name</td>
+      <td><%= @user.name %></td>
+    </tr>
+    <tr>
+      <td>introduction</td>
+      <td><%= @user.introduction %></td>
+    </tr>
+  </tbody>
+</table>
