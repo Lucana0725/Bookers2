@@ -3,6 +3,8 @@
   <thead>
     <tr>
       <th></th>
+      <!--可視化するためテスト的にユーザー名も表示させてみる-->
+      <th>User</th>
       <th>Title</th>
       <th>Opinion</th>
       <th></th>
@@ -18,6 +20,11 @@
         <%= link_to user_path(book.id) do %>
           <%= image_tag book.user.get_profile_image(100, 100) %>
         <% end %>
+      </td>
+      <td>
+        <!--動作確認時に誰の投稿かわかりにくいので可視化するためユーザー名を表示させてみる-->
+        <!--|book|で受けた"book"に、Userモデルの持つname(user.name)を指定(アソシエーションを結んでるからできる)-->
+        <%= book.user.name %>
       </td>
       <td>
         <!--タイトルクリックでそのbookのshowに飛ぶ-->
