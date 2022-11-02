@@ -1,7 +1,8 @@
 class BooksController < ApplicationController
-  def new
-    @book = Book.new
-  end
+  # New Book画面をusers#showに引っ越したので、@book = Book.newもusers_controller#showへ引っ越し。
+  # def new
+  #   @book = Book.new
+  # end
   
   def create
     @book = Book.new(book_params)
