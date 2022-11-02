@@ -13,10 +13,16 @@ class BooksController < ApplicationController
 
   def index
     @books = Book.all
+    # 部分テンプレート_infoのuserにわたす@userを定義。
+    # indexページは、一覧を表示するだけであり、その一覧を見るユーザーはログインしているユーザーであることからcurrent_user
+    @user = current_user
   end
 
   def show
     @book = Book.find(params[:id])
+    # 部分テンプレート_infoのuserにわたす@userを定義。
+    # books#showは単一のbookをみるページであり、bookについているユーザーの情報を持ってくる必要があるので、
+    # @book.user。(userとモデルを指定しているのは、@bookのidに紐づいている「全ての」ユーザー情報が欲しいため。)
     @user = @book.user
   end
 
