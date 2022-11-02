@@ -17,7 +17,7 @@
         <!--アソシエーション結んでるので@booksにuserのデータも入ってる(という解釈で合ってるはず)-->
         <!--プロフィール画像クリックでそのユーザーのshowに飛ぶ-->
         <!--(|book|で受けた"book"の"id"を付与してあげないとURLの":id"が判別できなくてエラーになる…)-->
-        <%= link_to user_path(book.id) do %>
+        <%= link_to user_path(book.user_id) do %>
           <%= image_tag book.user.get_profile_image(100, 100) %>
         <% end %>
       </td>
