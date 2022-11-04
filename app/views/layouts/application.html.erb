@@ -46,6 +46,10 @@
       <% end %>
       </ul>
     </header>
+    <!--%= render 'layouts/notification.html.erb' %>-->
+    <div>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>
 </html>
