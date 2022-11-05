@@ -12,11 +12,13 @@ class BooksController < ApplicationController
       redirect_to book_path(@book.id)
     else
       @books = Book.all
+      @user = current_user
       render :index
     end
   end
 
   def index
+    @book = Book.new
     @books = Book.all
     # 部分テンプレート_infoのuserにわたす@userを定義。
     # indexページは、一覧を表示するだけであり、その一覧を見るユーザーはログインしているユーザーであることからcurrent_user
@@ -24,6 +26,7 @@ class BooksController < ApplicationController
   end
 
   def show
+    @bookn = Book.new
     @book = Book.find(params[:id])
     # 部分テンプレート_infoのuserにわたす@userを定義。
     # books#showは単一のbookをみるページであり、bookについているユーザーの情報を持ってくる必要があるので、
