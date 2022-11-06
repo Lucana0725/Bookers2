@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Bookers2</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maxmum-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -13,38 +13,52 @@
 
   <body>
     <header>
-      <%= link_to "Bookers", root_path %>
-      <ul>
-      <% if user_signed_in? %>
-        <li>
-          <%= link_to "Home", user_path(current_user.id) %>
-        </li>
-        <li>
-          <!--Users-->
-          <%= link_to "Users", users_path %>
-        </li>
-        <li>
-          <!--Books-->
-          <%= link_to "Books", books_path %>
-        </li>
-        <li>
-          <%= link_to "Log out", destroy_user_session_path, method: :delete %>
-        </li>
-      <% else %>
-        <li>
-          <%= link_to "Home", root_path %>
-        </li>
-        <li>
-          <%= link_to "About", home_about_path %>
-        </li>
-        <li>
-          <%= link_to "Sign up", new_user_registration_path %>
-        </li>
-        <li>
-          <%= link_to "Log in", new_user_session_path %>
-        </li>
-      <% end %>
-      </ul>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <%= link_to root_path, class: "navbar-brand" do %>
+            <span>Bookers</span>
+          <% end %>
+          <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="navbar-collapse collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+            <% if user_signed_in? %>
+              <li>
+                <!--%= link_to "Home", user_path(current_user.id), class: "nav-link text-light" %>-->
+                <%= link_to user_path(current_user.id), class: "nav-link text-light" do %>
+                  <span><i class="fas fa-home"></i>Home</span>
+                <% end %>
+              </li>
+              <li>
+                <!--Users-->
+                <%= link_to "Users", users_path %>
+              </li>
+              <li>
+                <!--Books-->
+                <%= link_to "Books", books_path %>
+              </li>
+              <li>
+                <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+              </li>
+            <% else %>
+              <li>
+                <%= link_to "Home", root_path %>
+              </li>
+              <li>
+                <%= link_to "About", home_about_path %>
+              </li>
+              <li>
+                <%= link_to "Sign up", new_user_registration_path %>
+              </li>
+              <li>
+                <%= link_to "Log in", new_user_session_path %>
+              </li>
+            <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
     </header>
     <!--サインアップ、ログイン、ログアウト時のフラッシュメッセージの設定-->
     <p class="notice"><%= notice %></p>
