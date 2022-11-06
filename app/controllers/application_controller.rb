@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   # 未ログイン時にアクセスできるのはhomes#topのみ に制限する。
   # :authenticate_user! ---> 未ログイン時はログインページに飛ばすというauthedeviseのメソッド。
-  before_action :authenticate_user!, except: [:top]
+  before_action :authenticate_user!, except: [:top, :about]
   
   # ストロングパラメーターを反映させるdeviseのメソッド。
   before_action :configure_permitted_parameters, if: :devise_controller?
