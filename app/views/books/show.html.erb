@@ -1,30 +1,37 @@
-<%= render 'users/info.html.erb', user: @user, book: @bookn %>
-
-<h1>Book detail</h1>
-<table>
-  <tbody>
-    <tr>
-      <td>
-        <!--books_controller#showで定義した@bookに対してUserモデルのget_profile_imageメソッドの使用(アソシエーションを結んでいるから使用可能)-->
-        <%= image_tag @book.user.get_profile_image(100, 100) %>
-      </td>
-      <td>
-        <!--bookのタイトルをクリックするとbookの詳細ページへ飛ぶようリンクを-->
-        <%= link_to book_path(@book.id) do %>
-          <%= @book.title %>
-        <% end %>
-      </td>
-      <td>
-        <%= @book.body %>
-      </td>
-      <% if @book.user == current_user %>
-        <td>
-          <%= link_to "Edit", edit_book_path(@book.id) %>
-        </td>
-        <td>
-          <%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "Are you sure?" %>
-        </td>
-      <% end %>
-    </tr>
-  </tbody>
-</table>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'users/info.html.erb', user: @user, book: @bookn %>
+    </div>
+    <div class="col-md-8 offset-md-1">
+      <h1>Book detail</h1>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>
+              <!--books_controller#showで定義した@bookに対してUserモデルのget_profile_imageメソッドの使用(アソシエーションを結んでいるから使用可能)-->
+              <%= image_tag @book.user.get_profile_image(100, 100) %>
+            </td>
+            <td>
+              <!--bookのタイトルをクリックするとbookの詳細ページへ飛ぶようリンクを-->
+              <%= link_to book_path(@book.id) do %>
+                <%= @book.title %>
+              <% end %>
+            </td>
+            <td>
+              <%= @book.body %>
+            </td>
+            <% if @book.user == current_user %>
+              <td>
+                <%= link_to "Edit", edit_book_path(@book.id) %>
+              </td>
+              <td>
+                <%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "Are you sure?" %>
+              </td>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
