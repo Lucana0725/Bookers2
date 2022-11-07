@@ -36,13 +36,25 @@ class BooksController < ApplicationController
 
   def edit
     # 他人が投稿内容を勝手に編集できないよう、アクセスさせなくする記述
-    user_id = params[:id].to_i
-    login_user_id = current_user.id
-    if (user_id != login_user_id)
+    # user_id = params[:id].to_i
+    # login_user_id = current_user.id
+    # if (user_id != login_user_id)
+    #   redirect_to books_path
+    # end
+    
+    # @book = Book.find(params[:id])
+    
+    # 上記のコード群ではエラーになる。
+    # 一行目のuser_id = params[:id].to_iの:idには「Bookの」idが入ってくる。
+    # それをuser_idで保持、current_user.idと比較しようとするから一致するわけもなく弾かれる。
+    
+    @book = Book.find(params[:id])
+    if @book.user.id == current_user.id
+      render :edit
+    else
       redirect_to books_path
     end
     
-    @book = Book.find(params[:id])
   end
   
   def update
