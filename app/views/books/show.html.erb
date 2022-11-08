@@ -10,7 +10,10 @@
           <tr>
             <td>
               <!--books_controller#showで定義した@bookに対してUserモデルのget_profile_imageメソッドの使用(アソシエーションを結んでいるから使用可能)-->
-              <%= image_tag @book.user.get_profile_image(100, 100) %>
+              <%= link_to user_path(@book.user.id) do %>
+                <%= image_tag @book.user.get_profile_image(100, 100) %><br/>
+                <%= @book.user.name %>
+              <% end %>
             </td>
             <td>
               <!--bookのタイトルをクリックするとbookの詳細ページへ飛ぶようリンクを-->
