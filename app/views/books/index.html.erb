@@ -13,14 +13,14 @@
     <div class="col-md-3">
       <%= render 'users/info.html.erb', user: @user, book: @book %>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-8 offset-1">
       <h2>Books</h2>
       <table class="table table-hover table-inverse">
         <thead>
           <tr>
             <th></th>
             <!--可視化するためテスト的にユーザー名も表示させてみる-->
-            <th>User</th>
+            <!--<th>User</th>-->
             <th>Title</th>
             <th>Opinion</th>
             <th></th>
@@ -37,11 +37,11 @@
                 <%= image_tag book.user.get_profile_image(100, 100) %>
               <% end %>
             </td>
-            <td>
+            <!--<td>-->
               <!--動作確認時に誰の投稿かわかりにくいので可視化するためユーザー名を表示させてみる-->
               <!--|book|で受けた"book"に、Userモデルの持つname(user.name)を指定(アソシエーションを結んでるからできる)-->
-              <%= book.user.name %>
-            </td>
+            <!--  %= book.user.name %>-->
+            <!--</td>-->
             <td>
               <!--タイトルクリックでそのbookのshowに飛ぶ-->
               <!--(|book|で受けた"book"の"id"を付与してあげないとURLの":id"が判別できなくてエラーになる…)-->
