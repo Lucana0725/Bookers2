@@ -7,7 +7,13 @@ class User < ApplicationRecord
   has_many :books, dependent: :destroy
   has_one_attached :profile_image
   
+  # :nameのバリデーション。空はダメ、2文字以上20文字以下、他と被ってはいけない というオプションたち
   validates :name, presence: true
+  validates :name, {length: {minimum: 2, maximum: 20}}
+  validates :name, uniqueness: true
+  
+  # :introductionのバリデーション。50文字以内でないとダメ というオプション
+  validates :introduction, {length: {maximum: 50}}
   
   def get_profile_image(width, height)
     unless profile_image.attached?
